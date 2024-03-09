@@ -18,6 +18,9 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
 	title: "",
 	description: "",
+	icons: {
+		icon: "/favicon.png",
+	},
 };
 
 function RootLayout({ children }: Readonly<RootLayoutProps>) {
