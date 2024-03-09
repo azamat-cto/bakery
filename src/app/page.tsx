@@ -1,9 +1,7 @@
-import { Button } from "@/components/ui/button";
-
 function Home() {
 	return (
 		<div className="flex h-[100dvh] items-center justify-center">
-			<Button>Button</Button>
+			<h1 className="font-serif text-4xl font-bold">Hello World!</h1>
 		</div>
 	);
 }

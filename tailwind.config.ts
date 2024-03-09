@@ -13,10 +13,11 @@ const config = {
 				"2xl": "1400px",
 			},
 		},
+		fontFamily: {
+			sans: ["var(--font-montserrat)", ...fontFamily.sans],
+			serif: ["var(--font-dancing-script)", "cursive"],
+		},
 		extend: {
-			fontFamily: {
-				sans: ["var(--font-sans)", ...fontFamily.sans],
-			},
 			colors: {
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
