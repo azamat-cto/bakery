@@ -1,20 +1,38 @@
-import { ReactNode } from "react";
-import type { Metadata } from "next";
 import "@/styles/globals.css";
 
-type Props = {
+import { ReactNode } from "react";
+import type { Metadata } from "next";
+import { Inter as FontSans } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+type RootLayoutProps = {
     children: ReactNode;
 };
+
+const fontSans = FontSans({
+    subsets: ["latin"],
+    variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
     title: "",
     description: "",
 };
 
-function RootLayout({ children }: Readonly<Props>) {
+function RootLayout({ children }: Readonly<RootLayoutProps>) {
     return (
-        <html lang="en">
-            <body>{children}</body>
+        <html
+            lang="en"
+            suppressHydrationWarning
+            className={cn(fontSans.variable)}
+        >
+            <body
+                className={cn(
+                    "bg-background text-foreground font-sans antialiased"
+                )}
+            >
+                {children}
+            </body>
         </html>
     );
 }
