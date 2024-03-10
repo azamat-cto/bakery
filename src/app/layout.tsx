@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Dancing_Script, Montserrat } from "next/font/google";
 import type { ReactNode } from "react";
 
+import Header from "@/components/Header";
 import { cn } from "@/lib/utils";
 
 type RootLayoutProps = {
@@ -40,7 +41,8 @@ function RootLayout({ children }: Readonly<RootLayoutProps>) {
 					"bg-background text-foreground font-sans antialiased",
 				)}
 			>
-				{children}
+				<Header />
+				<main>{children}</main>
 			</body>
 		</html>
 	);
