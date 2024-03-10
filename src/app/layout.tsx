@@ -13,11 +13,13 @@ type RootLayoutProps = {
 
 const fontDancingScript = Dancing_Script({
 	weight: ["700"],
+	subsets: ["latin"],
 	variable: "--font-dancing-script",
 });
 
 const fontMontserrat = Montserrat({
 	weight: ["400", "600", "700"],
+	subsets: ["latin"],
 	variable: "--font-montserrat",
 });
 
