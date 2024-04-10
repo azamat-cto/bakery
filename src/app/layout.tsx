@@ -34,7 +34,7 @@ function RootLayout({ children }: Readonly<RootLayoutProps>) {
             className={cn(DANCING_SCRIPT.variable, MONTSERRAT.variable)}
             suppressHydrationWarning
         >
-            <body className="font-sans">
+            <body className="bg-background font-sans text-foreground antialiased">
                 <main>{children}</main>
             </body>
         </html>
