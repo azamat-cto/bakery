@@ -28,7 +28,7 @@ function Home() {
                         <h1 className="mb-6 font-display text-5xl text-white">
                             Select The Best <br /> Quality Breads
                         </h1>
-                        <Button className="h-12 rounded-none font-semibold text-accent-foreground">
+                        <Button className="h-12 rounded-none text-accent-foreground">
                             Select Breads
                         </Button>
                         <Image

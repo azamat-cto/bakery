@@ -18,7 +18,7 @@ function About() {
                             possible. We have an extensive line of freshly
                             prepared bakery and coffee products.
                         </p>
-                        <Button className="h-12 rounded-none font-semibold text-accent-foreground">
+                        <Button className="h-12 rounded-none text-accent-foreground">
                             Know More
                         </Button>
                         <Image

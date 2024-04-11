@@ -94,7 +94,7 @@ function News() {
                         ))}
                     </div>
 
-                    <Button className="h-12 rounded-none font-semibold text-accent-foreground">
+                    <Button className="h-12 rounded-none text-accent-foreground">
                         See More
                     </Button>
                 </div>

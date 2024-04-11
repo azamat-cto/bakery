@@ -20,7 +20,7 @@ const DANCING_SCRIPT = Dancing_Script({
 
 const MONTSERRAT = Montserrat({
     subsets: ["latin"],
-    weight: ["400", "600", "700"],
+    weight: ["400", "500", "600", "700"],
     variable: "--font-montserrat",
 });
 
