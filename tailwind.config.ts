@@ -59,6 +59,8 @@ const config = {
             backgroundImage: {
                 "gradient-mask":
                     "linear-gradient(180deg, hsla(0, 0%, 0%, 0) 0%, hsl(0, 0%, 6%) 100%)",
+                "gradient-mask2":
+                    "linear-gradient(180deg, hsl(0, 0%, 6%) 0%, hsla(0, 0%, 4%, 0.1) 50%, hsl(0, 0%, 6%) 100%)",
             },
             borderRadius: {
                 lg: "var(--radius)",
