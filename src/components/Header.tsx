@@ -1,5 +1,6 @@
 "use client";
 
+import { useMotionValueEvent, useScroll } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -7,6 +8,7 @@ import { useState } from "react";
 
 import Bread1 from "@/assets/images/bread-1.png";
 import Bread4 from "@/assets/images/bread-4.png";
+import { cn } from "@/lib/cn";
 
 import IconMenuLine from "./icons/line/IconMenuLine";
 import { Button } from "./ui/button";
@@ -42,10 +44,25 @@ const links = [
 
 function Header() {
     const [open, setOpen] = useState(false);
+    const [scroll, setScroll] = useState(false);
     const router = useRouter();
+    const { scrollY } = useScroll();
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        if (latest >= 50) {
+            setScroll(true);
+        } else {
+            setScroll(false);
+        }
+    });
 
     return (
-        <header className="fixed left-0 top-0 z-50 w-full bg-transparent">
+        <header
+            className={cn(
+                "fixed left-0 top-0 z-50 w-full",
+                scroll &&
+                    "after:content after:absolute after:size-full after:bg-[hsla(0,0%,6%,0.2)] after:backdrop-blur after:top-0 after:left-0 after:-z-10",
+            )}
+        >
             <div className="container">
                 <div className="flex h-14 items-center justify-between">
                     <Link
