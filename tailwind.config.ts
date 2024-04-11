@@ -22,6 +22,7 @@ const config = {
             colors: {
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",
+                heading: "hsl(var(--heading))",
                 card: {
                     DEFAULT: "hsl(var(--card))",
                     foreground: "hsl(var(--card-foreground))",
@@ -32,6 +33,7 @@ const config = {
                 },
                 primary: {
                     DEFAULT: "hsl(var(--primary))",
+                    alt: "hsl(var(--primary-alt))",
                     foreground: "hsl(var(--primary-foreground))",
                 },
                 secondary: {
@@ -53,6 +55,10 @@ const config = {
                 border: "hsl(var(--border))",
                 input: "hsl(var(--input))",
                 ring: "hsl(var(--ring))",
+            },
+            backgroundImage: {
+                "gradient-mask":
+                    "linear-gradient(180deg, hsla(0, 0%, 0%, 0) 0%, hsl(0, 0%, 6%) 100%)",
             },
             borderRadius: {
                 lg: "var(--radius)",

@@ -1,6 +1,5 @@
 "use client";
 
-import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -9,6 +8,7 @@ import { useState } from "react";
 import Bread1 from "@/assets/images/bread-1.png";
 import Bread4 from "@/assets/images/bread-4.png";
 
+import IconMenuLine from "./icons/line/IconMenuLine";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
@@ -45,11 +45,11 @@ function Header() {
     const router = useRouter();
 
     return (
-        <header className="sticky left-0 top-0 z-50 w-full bg-transparent">
+        <header className="fixed left-0 top-0 z-50 w-full bg-transparent">
             <div className="container">
                 <div className="flex h-14 items-center justify-between">
                     <Link
-                        className="font-display text-xl text-primary transition-colors"
+                        className="font-display text-xl text-primary transition-colors hover:text-primary-alt"
                         href="/"
                     >
                         Bakery
@@ -68,49 +68,52 @@ function Header() {
                     <Sheet open={open} onOpenChange={setOpen}>
                         <SheetTrigger asChild className="md:hidden">
                             <Button
-                                className="size-8"
+                                className="text-2xl text-foreground hover:bg-transparent hover:text-heading"
                                 size="icon"
-                                variant="link"
+                                variant="ghost"
                             >
-                                <HamburgerMenuIcon />
+                                <IconMenuLine />
                                 <span className="sr-only">Open</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="right" className="px-12 pt-24">
+                        <SheetContent
+                            side="right"
+                            className="border-l-0 bg-[hsla(0,0%,6%,0.2)] px-12 pt-24 backdrop-blur"
+                        >
                             <nav>
                                 <ul className="flex flex-col gap-y-10">
                                     {links.map((link) => (
                                         <li key={link.key}>
-                                            <a
-                                                className="font-semibold transition-colors hover:text-primary"
+                                            <Link
+                                                className="font-semibold text-heading transition-colors hover:text-primary"
                                                 href={link.url}
                                                 onClick={() => {
                                                     router.push(
-                                                        link.toString(),
+                                                        link.url.toString(),
                                                     );
                                                     setOpen(false);
                                                 }}
                                             >
                                                 {link.label}
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
                             </nav>
 
                             <Image
-                                className="absolute right-3 top-44 w-[80px] invert"
+                                className="absolute right-3 top-44 w-[80px]"
                                 src={Bread4}
                                 width={286}
                                 height={281}
-                                alt="Bread"
+                                alt="Pretzel"
                             />
                             <Image
-                                className="absolute left-24 top-[28rem] w-[60px] invert"
+                                className="absolute left-24 top-[28rem] w-[60px]"
                                 src={Bread1}
                                 width={200}
                                 height={205}
-                                alt="Bread"
+                                alt="Croissant"
                             />
                         </SheetContent>
                     </Sheet>
