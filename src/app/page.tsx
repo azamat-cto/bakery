@@ -8,6 +8,7 @@ import IconFacebookCircleLine from "@/components/icons/line/IconFacebookCircleLi
 import IconInstagramLine from "@/components/icons/line/IconInstagramLine";
 import IconMapPinLine from "@/components/icons/line/IconMapPinLine";
 import IconYouTubeLine from "@/components/icons/line/IconYouTubeLine";
+import { Button } from "@/components/ui/button";
 
 function Home() {
     return (
@@ -27,12 +28,9 @@ function Home() {
                         <h1 className="mb-6 font-display text-5xl text-white">
                             Select The Best <br /> Quality Breads
                         </h1>
-                        <Link
-                            className="inline-flex bg-primary px-8 py-5 font-semibold text-accent-foreground transition-colors hover:bg-primary-alt"
-                            href="/"
-                        >
+                        <Button className="h-12 rounded-none font-semibold text-accent-foreground">
                             Select Breads
-                        </Link>
+                        </Button>
                         <Image
                             className="absolute left-16 top-60 w-14"
                             src={Bread1}
