@@ -65,7 +65,7 @@ function News() {
                     <div className="grid gap-8">
                         {items.map((item, index) => (
                             <Card
-                                className="flex items-center gap-x-4 border-none"
+                                className="grid grid-cols-2 items-center border-none"
                                 key={item.id}
                             >
                                 <CardHeader>
@@ -78,11 +78,12 @@ function News() {
                                 </CardHeader>
                                 <CardContent
                                     className={cn(
-                                        "p-2",
+                                        "p-6 justify-self-center",
                                         index % 2 === 0 ? "-order-1" : "",
                                     )}
                                 >
                                     <Image
+                                        className="w-[160px]"
                                         src={item.image}
                                         alt={item.title}
                                         width={650}
