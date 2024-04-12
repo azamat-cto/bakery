@@ -3,7 +3,7 @@
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 import Bread1 from "@/assets/images/bread-1.png";
@@ -46,6 +46,7 @@ function Header() {
     const [open, setOpen] = useState(false);
     const [scroll, setScroll] = useState(false);
     const router = useRouter();
+    const pathname = usePathname();
     const { scrollY } = useScroll();
     useMotionValueEvent(scrollY, "change", (latest) => {
         if (latest >= 50) {
@@ -76,7 +77,15 @@ function Header() {
                         <ul className="flex items-center gap-x-4">
                             {links.map((link) => (
                                 <li key={link.key}>
-                                    <Link href={link.url}>{link.label}</Link>
+                                    <Link
+                                        className={cn(
+                                            pathname === link.url &&
+                                                "text-primary",
+                                        )}
+                                        href={link.url}
+                                    >
+                                        {link.label}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -102,7 +111,11 @@ function Header() {
                                     {links.map((link) => (
                                         <li key={link.key}>
                                             <Link
-                                                className="font-semibold text-heading transition-colors hover:text-primary"
+                                                className={cn(
+                                                    "font-semibold text-heading transition-colors hover:text-primary",
+                                                    pathname === link.url &&
+                                                        "text-primary",
+                                                )}
                                                 href={link.url}
                                                 onClick={() => {
                                                     router.push(
