@@ -108,10 +108,21 @@ function Header() {
                                     {links.map((link) => (
                                         <li key={link.key}>
                                             <Link
-                                                className="font-semibold text-heading transition-colors hover:text-primary"
+                                                className={cn(
+                                                    "font-semibold text-heading",
+                                                    {
+                                                        "text-primary":
+                                                            link.key ===
+                                                            activeSection,
+                                                    },
+                                                )}
                                                 href={link.url}
                                                 onClick={() => {
                                                     setOpen(false);
+                                                    setActiveSection(link.key);
+                                                    setTimeOfLastClick(
+                                                        Date.now(),
+                                                    );
                                                 }}
                                             >
                                                 {link.label}
