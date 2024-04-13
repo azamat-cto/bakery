@@ -1,52 +1,25 @@
 "use client";
 
-import { useMotionValueEvent, useScroll } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 import Bread1 from "@/assets/images/bread-1.png";
 import Bread4 from "@/assets/images/bread-4.png";
+import { useActiveSectionContext } from "@/contexts/ActiveSectionContext";
 import { cn } from "@/lib/cn";
+import { links } from "@/lib/constants";
 
 import IconMenuLine from "./icons/line/IconMenuLine";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
-const links = [
-    {
-        key: "home",
-        url: "/",
-        label: "Home",
-    },
-    {
-        key: "news",
-        url: "/news",
-        label: "News",
-    },
-    {
-        key: "about",
-        url: "/about",
-        label: "About Us",
-    },
-    {
-        key: "favourites",
-        url: "/favorites",
-        label: "Favorites",
-    },
-    {
-        key: "location",
-        url: "/location",
-        label: "Location",
-    },
-];
-
 function Header() {
+    const { activeSection, setActiveSection, setTimeOfLastClick } =
+        useActiveSectionContext();
     const [open, setOpen] = useState(false);
     const [scroll, setScroll] = useState(false);
-    const router = useRouter();
-    const pathname = usePathname();
     const { scrollY } = useScroll();
     useMotionValueEvent(scrollY, "change", (latest) => {
         if (latest >= 50) {
@@ -64,8 +37,12 @@ function Header() {
                     "after:content after:absolute after:size-full after:bg-[hsla(0,0%,6%,0.2)] after:backdrop-blur after:top-0 after:left-0 after:-z-10",
             )}
         >
-            <div className="container">
-                <div className="flex h-14 items-center justify-between">
+            <motion.div
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="container"
+            >
+                <div className="flex h-16 items-center justify-between">
                     <Link
                         className="font-display text-xl text-primary transition-colors hover:text-primary-alt"
                         href="/"
@@ -74,18 +51,37 @@ function Header() {
                     </Link>
 
                     <nav className="hidden md:block">
-                        <ul className="flex items-center gap-x-16">
+                        <ul className="flex items-center gap-x-4">
                             {links.map((link) => (
                                 <li key={link.key}>
                                     <Link
                                         className={cn(
-                                            "font-medium",
-                                            pathname === link.url &&
-                                                "text-primary",
+                                            "font-medium relative p-2 px-4",
+                                            {
+                                                "text-heading":
+                                                    link.key === activeSection,
+                                            },
                                         )}
                                         href={link.url}
+                                        onClick={() => {
+                                            setActiveSection(link.key);
+                                            setTimeOfLastClick(Date.now());
+                                        }}
                                     >
-                                        {link.label}
+                                        <span className="relative z-10">
+                                            {link.label}
+                                        </span>
+                                        {link.key === activeSection && (
+                                            <motion.span
+                                                className="absolute inset-0 rounded-full bg-primary"
+                                                layoutId="activeSection"
+                                                transition={{
+                                                    type: "spring",
+                                                    stiffness: 380,
+                                                    damping: 30,
+                                                }}
+                                            />
+                                        )}
                                     </Link>
                                 </li>
                             ))}
@@ -112,16 +108,9 @@ function Header() {
                                     {links.map((link) => (
                                         <li key={link.key}>
                                             <Link
-                                                className={cn(
-                                                    "font-semibold text-heading transition-colors hover:text-primary",
-                                                    pathname === link.url &&
-                                                        "text-primary",
-                                                )}
+                                                className="font-semibold text-heading transition-colors hover:text-primary"
                                                 href={link.url}
                                                 onClick={() => {
-                                                    router.push(
-                                                        link.url.toString(),
-                                                    );
                                                     setOpen(false);
                                                 }}
                                             >
@@ -149,7 +138,7 @@ function Header() {
                         </SheetContent>
                     </Sheet>
                 </div>
-            </div>
+            </motion.div>
         </header>
     );
 }

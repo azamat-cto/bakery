@@ -1,13 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
 import VisitBg from "@/assets/images/visit-bg.jpg";
+import { useSectionInView } from "@/hooks/useSectionInView";
 
 import { Button } from "./ui/button";
 
-function VisitSection() {
+function LocationSection() {
+    const { ref } = useSectionInView("location", 0.75);
+
     return (
-        <section className="relative pb-4 pt-20 lg:pt-36">
+        <section
+            className="relative scroll-mt-20 pb-4 pt-20 lg:pt-36"
+            id="location"
+            ref={ref}
+        >
             <Image
                 className="absolute inset-0 -z-10 size-full object-cover object-center"
                 src={VisitBg}
@@ -28,7 +37,7 @@ function VisitSection() {
                             visit
                         </p>
                         <Button
-                            className="h-12 rounded-none text-accent-foreground"
+                            className="h-12 rounded-none font-semibold"
                             asChild
                         >
                             <Link
@@ -46,4 +55,4 @@ function VisitSection() {
     );
 }
 
-export default VisitSection;
+export default LocationSection;

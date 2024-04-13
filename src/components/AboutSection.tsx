@@ -1,12 +1,17 @@
+"use client";
+
 import Image from "next/image";
 
 import AboutBread from "@/assets/images/about-bread.png";
 import Bread2 from "@/assets/images/bread-2.png";
 import { Button } from "@/components/ui/button";
+import { useSectionInView } from "@/hooks/useSectionInView";
 
 function About() {
+    const { ref } = useSectionInView("about", 0.75);
+
     return (
-        <section className="pb-4 pt-20">
+        <section className="pb-4 pt-20" id="about" ref={ref}>
             <div className="container">
                 <div className="grid gap-y-16 sm:grid-cols-[480px] sm:justify-center md:grid-cols-[repeat(2,350px)] md:items-center md:gap-x-8 lg:grid-cols-[450px,430px] lg:gap-x-28">
                     <div className="relative text-center md:order-1 md:text-start">
@@ -18,7 +23,7 @@ function About() {
                             possible. We have an extensive line of freshly
                             prepared bakery and coffee products.
                         </p>
-                        <Button className="h-12 rounded-none text-accent-foreground">
+                        <Button className="h-12 rounded-none font-semibold">
                             Know More
                         </Button>
                         <Image

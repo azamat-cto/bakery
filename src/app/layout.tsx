@@ -7,6 +7,7 @@ import type { ReactNode } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollUp from "@/components/ScrollUp";
+import ActiveSectionContextProvider from "@/contexts/ActiveSectionContext";
 import { cn } from "@/lib/cn";
 
 type RootLayoutProps = {
@@ -47,10 +48,12 @@ function RootLayout({ children }: Readonly<RootLayoutProps>) {
             suppressHydrationWarning
         >
             <body className="bg-background font-sans text-foreground antialiased">
-                <Header />
-                <main className="overflow-x-hidden">{children}</main>
-                <Footer />
-                <ScrollUp />
+                <ActiveSectionContextProvider>
+                    <Header />
+                    <main className="overflow-x-hidden">{children}</main>
+                    <Footer />
+                    <ScrollUp />
+                </ActiveSectionContextProvider>
             </body>
         </html>
     );

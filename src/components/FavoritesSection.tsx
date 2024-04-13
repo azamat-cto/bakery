@@ -1,11 +1,7 @@
+"use client";
+
 import Image from "next/image";
 
-import FavoriteBread1 from "@/assets/images/favorite-bread-1.png";
-import FavoriteBread2 from "@/assets/images/favorite-bread-2.png";
-import FavoriteBread3 from "@/assets/images/favorite-bread-3.png";
-import FavoriteBread4 from "@/assets/images/favorite-bread-4.png";
-import FavoriteBread5 from "@/assets/images/favorite-bread-5.png";
-import FavoriteBread6 from "@/assets/images/favorite-bread-6.png";
 import IconAddLine from "@/components/icons/line/IconAddLine";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,55 +10,14 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
+import { useSectionInView } from "@/hooks/useSectionInView";
+import { items } from "@/lib/constants";
 
-const items = [
-    {
-        id: "whole-grain",
-        title: "Whole Grain",
-        description: "Bread",
-        image: FavoriteBread1,
-        price: 6.0,
-    },
-    {
-        id: "rye",
-        title: "Rye",
-        description: "Bread",
-        image: FavoriteBread2,
-        price: 8.0,
-    },
-    {
-        id: "wheat",
-        title: "Wheat",
-        description: "Bread",
-        image: FavoriteBread3,
-        price: 3.0,
-    },
-    {
-        id: "multigrain",
-        title: "Multigrain",
-        description: "Bread",
-        image: FavoriteBread4,
-        price: 5.0,
-    },
-    {
-        id: "sourdough",
-        title: "Sourdough",
-        description: "Bread",
-        image: FavoriteBread5,
-        price: 7.0,
-    },
-    {
-        id: "french",
-        title: "French",
-        description: "Bread",
-        image: FavoriteBread6,
-        price: 3.0,
-    },
-];
+function FavoritesSection() {
+    const { ref } = useSectionInView("favorites", 0.75);
 
-function Favorites() {
     return (
-        <section className="pb-4 pt-20">
+        <section className="pb-4 pt-20" id="favorites" ref={ref}>
             <div className="container">
                 <h2 className="mb-6 text-center font-display text-4xl">
                     Customer Favorites
@@ -103,4 +58,4 @@ function Favorites() {
     );
 }
 
-export default Favorites;
+export default FavoritesSection;
