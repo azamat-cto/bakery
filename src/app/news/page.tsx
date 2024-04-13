@@ -24,11 +24,11 @@ const items = [
         image: NewBread1,
     },
     {
-        id: "salinata-prunes",
-        title: "Salinata Prunes",
+        id: "multigrain-bread",
+        title: "Multigrain Bread",
         description:
-            "100% rye bread with thermophilic sourdough flavored with applesauce and passion fruit, with prunes",
-        image: NewBread2,
+            "Tasty and made with different natural grains from the countryside",
+        image: NewBread5,
     },
     {
         id: "grain-bread",
@@ -45,11 +45,11 @@ const items = [
         image: NewBread4,
     },
     {
-        id: "multigrain-bread",
-        title: "Multigrain Bread",
+        id: "salinata-prunes",
+        title: "Salinata Prunes",
         description:
-            "Tasty and made with different natural grains from the countryside",
-        image: NewBread5,
+            "100% rye bread with thermophilic sourdough flavored with applesauce and passion fruit, with prunes",
+        image: NewBread2,
     },
 ];
 
@@ -61,29 +61,31 @@ function News() {
                     New Breads
                 </h2>
 
-                <div className="grid gap-y-8 pt-6">
-                    <div className="grid gap-8">
+                <div className="grid gap-y-8 pt-6 lg:pt-16">
+                    <div className="grid gap-8 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-[repeat(3,1fr)]">
                         {items.map((item, index) => (
                             <Card
-                                className="grid grid-cols-2 items-center border-none"
+                                className="flex grid-cols-subgrid flex-col items-center border-none text-center xs:flex-row xs:text-start sm:flex-col sm:justify-between lg:text-center"
                                 key={item.id}
                             >
                                 <CardHeader>
-                                    <CardTitle className="mb-2 font-display text-xl text-primary">
+                                    <CardTitle className="mb-2 font-display text-xl text-primary lg:text-4xl">
                                         {item.title}
                                     </CardTitle>
-                                    <CardDescription className="text-sm">
+                                    <CardDescription className="text-sm lg:px-6">
                                         {item.description}
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent
                                     className={cn(
-                                        "p-6 justify-self-center",
-                                        index % 2 === 0 ? "-order-1" : "",
+                                        "xs:p-4 justify-self-center",
+                                        index % 2 === 0
+                                            ? "xs:-order-1 sm:order-[initial]"
+                                            : "",
                                     )}
                                 >
                                     <Image
-                                        className="w-[160px]"
+                                        className="max-w-[160px] lg:max-w-[250px]"
                                         src={item.image}
                                         alt={item.title}
                                         width={650}
@@ -95,7 +97,7 @@ function News() {
                         ))}
                     </div>
 
-                    <Button className="h-12 rounded-none text-accent-foreground">
+                    <Button className="mx-auto h-12 rounded-none text-accent-foreground">
                         See More
                     </Button>
                 </div>

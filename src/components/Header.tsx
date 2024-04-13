@@ -74,11 +74,12 @@ function Header() {
                     </Link>
 
                     <nav className="hidden md:block">
-                        <ul className="flex items-center gap-x-4">
+                        <ul className="flex items-center gap-x-16">
                             {links.map((link) => (
                                 <li key={link.key}>
                                     <Link
                                         className={cn(
+                                            "font-medium",
                                             pathname === link.url &&
                                                 "text-primary",
                                         )}

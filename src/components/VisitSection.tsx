@@ -7,18 +7,18 @@ import { Button } from "./ui/button";
 
 function VisitSection() {
     return (
-        <section className="pb-4 pt-20">
-            <div className="container relative">
-                <Image
-                    className="absolute inset-0 -z-10 size-full object-cover object-center"
-                    src={VisitBg}
-                    alt=""
-                    width={2000}
-                    height={1000}
-                />
-                <div className="absolute left-0 top-0 -z-10 size-full bg-gradient-mask2" />
+        <section className="relative pb-4 pt-20 lg:pt-36">
+            <Image
+                className="absolute inset-0 -z-10 size-full object-cover object-center"
+                src={VisitBg}
+                alt=""
+                width={2000}
+                height={1000}
+            />
+            <div className="absolute left-0 top-0 -z-10 size-full bg-gradient-mask2" />
 
-                <div className="grid py-12">
+            <div className="container">
+                <div className="grid py-12 xs:grid-cols-[400px] xs:justify-center">
                     <div className="text-center">
                         <h2 className="mb-6 text-center font-display text-4xl text-heading">
                             Visit Our Store
