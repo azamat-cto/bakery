@@ -1,20 +1,32 @@
 {
     "compilerOptions": {
+        "lib": ["dom", "dom.iterable", "esnext"],
         "allowJs": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "incremental": true,
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"],
+            "~/*": ["./public/*"]
+        },
         "alwaysStrict": true,
         "allowUnreachableCode": false,
         "allowSyntheticDefaultImports": true,
-        "baseUrl": ".",
         "checkJs": true,
         "forceConsistentCasingInFileNames": true,
-        "esModuleInterop": true,
-        "incremental": true,
-        "isolatedModules": true,
-        "jsx": "preserve",
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "module": "esnext",
-        "moduleResolution": "bundler",
-        "noEmit": true,
         "noImplicitAny": true,
         "noImplicitThis": true,
         "noUnusedLocals": true,
@@ -23,21 +35,9 @@
         "noUncheckedIndexedAccess": true,
         "noFallthroughCasesInSwitch": true,
         "outDir": "out",
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ],
-        "paths": {
-            "@/*": ["./src/*"],
-            "~/*": ["./public/*"]
-        },
         "preserveConstEnums": true,
         "removeComments": true,
-        "resolveJsonModule": true,
-        "strict": true,
         "sourceMap": true,
-        "skipLibCheck": true,
         "strictNullChecks": true,
         "target": "es2017"
     },
